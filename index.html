@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--? CSS  -->
+    <link rel="stylesheet" href="./css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./css/all.min.css" />
+    <!-- *CAIRO & Barriecito FONT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barriecito&family=Cairo:wght@200;300;400;500;600;700;800;900;1000&display=swap"
+      rel="stylesheet"
+    />
+    <!-- *MAINSTYLE -->
+    <link rel="stylesheet" href="./css/style.css" />
+
+    <!--? JS  -->
+    <script src="./js/bootstrap.bundle.min.js" defer></script>
+    <script src="./js/code.jquery.com_jquery-3.7.0.min.js" defer></script>
+    <script src="./js/wScratchPad.min.js" defer></script>
+    <script src="./js/moment.js" defer></script>
+    <script src="./js/typing-min.js" defer></script>
+    <script src="./js/main.js" defer></script>
+
+    <!--? title  -->
+    <title>spy</title>
+  </head>
+  <body>
+    <nav id="navBar" class="fixed-top text-white py-2">
+      <div class="container d-flex align-items-center justify-content-between">
+        <div class="logo">
+          <img src="./imgs/cuting-icon.png" style="width: 35px" alt="" />
+        </div>
+
+        <ul class="nav">
+          <li class="nav-item hover-red-color">
+            <a href="" class="nav-link">
+              <i class="fa-solid fa-house"></i>
+            </a>
+          </li>
+          <li class="nav-item hover-red-color">
+            <a href="" class="nav-link">about</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <header
+      class="min-vh-100 bg-dark d-flex align-items-center justify-content-center"
+    >
+      <!--? welcome page  -->
+      <div
+        class="container text-white d-flex-without-impor align-items-center min-vh-100"
+        id="welocomePage"
+      >
+        <div class="">
+          <h2 class="display-3 letter-spacing logo-font">SPAYFALL</h2>
+          <p class="text-white text-opacity-75 text-capitalize">
+            Find the Secret Agent Among You <br />
+            Locate the Informer!
+          </p>
+
+          <div class="mb-3">
+            <button class="main-btn me-3" id="playBtn">
+              <span class="text-white">Play Now</span>
+              <i class="fas fa-arrow-right text-white"></i>
+            </button>
+            <button class="main-btn">
+              <span class="text-white">Sign In</span>
+              <i class="fas fa-arrow-right text-white"></i>
+            </button>
+          </div>
+
+          <ul class="icons list-unstyled d-flex gap-3 fs-4">
+            <li>
+              <a href="">
+                <i class="fab fa-facebook hover-red-color"></i>
+              </a>
+            </li>
+            <li>
+              <a href="">
+                <i class="fab fa-twitter-square hover-red-color"></i>
+              </a>
+            </li>
+            <li>
+              <a href="">
+                <i class="fab fa-instagram hover-red-color"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!--? settings page  -->
+      <div class="bg-dark text-white rounded-3" id="settings">
+        <div
+          class="flex-column justify-content-center align-items-center d-flex"
+        >
+          <p class="p-2 bg-white rounded-pill text-black mb-3">
+            No. of PLayers
+          </p>
+          <div class="d-flex justify-content-between players-num mb-3">
+            <span id="plus" class="pointer"
+              ><i class="icon fas fa-plus"></i
+            ></span>
+            <span id="numOfPlayers"></span>
+            <span id="minus" class="pointer"
+              ><i class="icon fa-solid fa-minus"></i
+            ></span>
+          </div>
+          <p class="px-3 py-1 bg-white rounded-pill text-black mb-3">Time</p>
+
+          <div class="d-flex justify-content-between players-num mb-3">
+            <span id="plusTime" class="pointer"
+              ><i class="icon fas fa-plus"></i
+            ></span>
+            <span id="time"></span>
+            <span id="minusTime" class="pointer"
+              ><i class="icon fa-solid fa-minus"></i
+            ></span>
+          </div>
+
+          <i
+            id="playIcon"
+            class="fa-regular fa-circle-play pointer hover-red-color fs-4 osm-title"
+            data-title="Lets Play"
+          >
+          </i>
+        </div>
+      </div>
+      <!--? cards page  -->
+      <div id="cards">
+        <div id="playerCard" class="player-card text-white"></div>
+      </div>
+
+      <!--? timing Page  -->
+      <div class="bg-dark text-white rounded-3" id="timeCrad">
+        <div class="p-3 text-center">
+          <div class="fs-5 mb-3" id="showTime"></div>
+          <i class="fa-solid fa-stopwatch fa-7x text-red fa-shake mb-3"></i>
+          <i
+            class="fa-regular fa-circle-stop d-block fs-4 hover-red-color osm-title pointer my-3"
+            id="stop"
+            data-title="Stop"
+          ></i>
+        </div>
+      </div>
+
+      <!-- ?  Loading-->
+      <div class="" id="loading">
+        <div
+          class="position-absolute top-0 start-0 end-0 bottom-0 d-flex justify-content-center align-items-center"
+          style="background-color: black; z-index: 9999"
+        >
+          <div class="text-center">
+            <img src="imgs/loading.gif" width="200" alt="" />
+            <p class="text-white fs-4">
+              So the spy was the Player No.
+              <span id="spyPlayer" class="text-red">2</span>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ? about -->
+      <!-- <section id="about" class="container bg-gray p-5">
+        <div class="row g-4 avatar-holder justify-content-between">
+          
+          
+          <div class="col-lg-3 col-md-4 col-sm-6">
+            <button
+              class="main-btn me-3 justify-content-start p-0 ps-1"
+              data-text="Alfarouk Omar Waleed"
+            >
+              <span class="avatar"></span>
+              <span class="text-white mentorName"></span>
+              <i class="fas fa-arrow-right text-white"></i>
+            </button>
+          </div>
+          <div class="col-lg-3 col-md-4 col-sm-6">
+            <button
+              class="main-btn me-3 justify-content-start p-0 ps-1"
+              data-text="Alfarouk Omar Waleed"
+            >
+              <span class="avatar"></span>
+              <span class="text-white mentorName"></span>
+              <i class="fas fa-arrow-right text-white"></i>
+            </button>
+          </div>
+          <div class="col-lg-3 col-md-4 col-sm-6">
+            <button
+              class="main-btn me-3 justify-content-start p-0 ps-1"
+              data-text="Alfarouk Omar Waleed"
+            >
+              <span class="avatar"></span>
+              <span class="text-white mentorName"></span>
+              <i class="fas fa-arrow-right text-white"></i>
+            </button>
+          </div>
+          <div class="col-lg-3 col-md-4 col-sm-6">
+            <button
+              class="main-btn me-3 justify-content-start p-0 ps-1"
+              data-text="Alfarouk Omar Waleed"
+            >
+              <span class="avatar"></span>
+              <span class="text-white mentorName"></span>
+              <i class="fas fa-arrow-right text-white"></i>
+            </button>
+          </div>
+          <div class="col-lg-3 col-md-4 col-sm-6">
+            <button
+              class="main-btn me-3 justify-content-start p-0 ps-1"
+              data-text="Alfarouk Omar Waleed"
+            >
+              <span class="avatar"></span>
+              <span class="text-white mentorName"></span>
+              <i class="fas fa-arrow-right text-white"></i>
+            </button>
+          </div>
+          <div class="col-lg-3 col-md-4 col-sm-6">
+            <button
+              class="main-btn me-3 justify-content-start p-0 ps-1"
+              data-text="Alfarouk Omar Waleed"
+            >
+              <span class="avatar"></span>
+              <span class="text-white mentorName"></span>
+              <i class="fas fa-arrow-right text-white"></i>
+            </button>
+          </div>
+          <div class="col-lg-3 col-md-4 col-sm-6">
+            <button
+              class="main-btn me-3 justify-content-start p-0 ps-1"
+              data-text="Alfarouk Omar Waleed"
+            >
+              <span class="avatar"></span>
+              <span class="text-white mentorName"></span>
+              <i class="fas fa-arrow-right text-white"></i>
+            </button>
+          </div>
+          <div class="col-lg-3 col-md-4 col-sm-6">
+            <button
+              class="main-btn me-3 justify-content-start p-0 ps-1"
+              data-text="Alfarouk Omar Waleed"
+            >
+              <span class="avatar"></span>
+              <span class="text-white mentorName"></span>
+              <i class="fas fa-arrow-right text-white"></i>
+            </button>
+          </div>
+          <div class="col-lg-3 col-md-4 col-sm-6">
+            <button
+              class="main-btn me-3 justify-content-start p-0 ps-1"
+              data-text="Alfarouk Omar Waleed"
+            >
+              <span class="avatar"></span>
+              <span class="text-white mentorName"></span>
+              <i class="fas fa-arrow-right text-white"></i>
+            </button>
+          </div>
+          <div class="col-lg-3 col-md-4 col-sm-6">
+            <button
+              class="main-btn me-3 justify-content-start p-0 ps-1"
+              data-text="Alfarouk Omar Waleed"
+            >
+              <span class="avatar"></span>
+              <span class="text-white mentorName"></span>
+              <i class="fas fa-arrow-right text-white"></i>
+            </button>
+          </div>
+        </div>
+      </section> -->
+    </header>
+
+    <!-- ? try scratch -->
+  </body>
+</html>
